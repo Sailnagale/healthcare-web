@@ -1,12 +1,11 @@
-// src/app/page.tsx
+// src/app/page.tsx (Updated feature list)
 
 export default function HomePage() {
   return (
     <div className="page-container">
       <h1>Welcome to Your AI Health Companion</h1>
       <p className="description">
-        Leverage AI for better health management, from real-time stress
-        detection to predictive Digital Twin simulations.
+        Leverage AI for better health management and seamless patient services.
       </p>
 
       <h2>Key Features Overview</h2>
@@ -15,9 +14,10 @@ export default function HomePage() {
           **AI Symptom Checker (Chatbot):** Get pre-diagnosis insights based on
           your symptoms.
         </li>
+        {/* UPDATED LIST ITEM HERE */}
         <li>
-          **AI Stress & Mental Health Detector:** Real-time feedback on your
-          emotional well-being.
+          **Appointment System:** Easily book, view, and manage your patient
+          appointments.
         </li>
         <li>
           **AI for Radiology:** Upload scans for preliminary anomaly detection
