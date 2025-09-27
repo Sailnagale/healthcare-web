@@ -1,0 +1,44 @@
+ai-health-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── audio/                # Relaxation music, breathing guides
+│   ├── components/
+│   │   ├── common/               # Reusable UI components (Button, Modal, Loader)
+│   │   ├── layout/               # Navbar, Sidebar, Footer
+│   │   └── charts/               # Graphs for stress trends, symptom history
+│   ├── modules/
+│   │   ├── mental-health/
+│   │   │   ├── components/       # EmotionCam, SentimentMeter, CopingTips
+│   │   │   ├── services/         # emotionDetection.js, sentimentAnalysis.js
+│   │   │   ├── utils/            # stressThresholds.js
+│   │   │   └── MentalHealthPage.jsx
+│   │   ├── symptom-checker/
+│   │   │   ├── components/       # ChatBot, SymptomForm, UrgencyBadge
+│   │   │   ├── services/         # symptomInference.js, apiCalls.js
+│   │   │   ├── utils/            # conditionMapping.js
+│   │   │   └── SymptomCheckerPage.jsx
+│   │   ├── radiology/
+│   │   │   ├── components/       # XrayUploader, AnomalyViewer
+│   │   │   ├── services/         # anomalyDetection.js, modelLoader.js
+│   │   │   ├── utils/            # imagePreprocessing.js
+│   │   │   └── RadiologyPage.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   └── Contact.jsx
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   ├── context/
+│   │   └── UserContext.js        # For storing user info, history, escalation flags
+│   ├── hooks/
+│   │   └── useWebcam.js          # For facial emotion detection
+│   ├── styles/
+│   │   └── global.css
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+└── README.md
