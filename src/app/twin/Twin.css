@@ -1,0 +1,516 @@
+/* src/app/twin/Twin.css */
+
+.twin-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Section */
+.twin-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.twin-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.twin-subtitle {
+    font-size: 1.3rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Simulation Controls */
+.simulation-controls {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.scenario-selector {
+    flex: 1;
+    min-width: 300px;
+}
+
+.selector-label {
+    font-weight: 600;
+    color: #2d3748;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.scenario-select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+}
+
+.scenario-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.scenario-select:hover {
+    border-color: #cbd5e1;
+}
+
+.simulation-btn {
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-height: 56px;
+}
+
+.simulation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.simulation-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Visualization Section */
+.visualization-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.chart-placeholder {
+    height: 400px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #64748b;
+    border: 3px dashed #cbd5e1;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.chart-placeholder:hover::before {
+    left: 100%;
+}
+
+.chart-placeholder:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.chart-placeholder p {
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 500;
+    z-index: 1;
+}
+
+/* Insights Panel */
+.insights-panel {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    color: white;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.insights-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd89b, #19547b);
+}
+
+.insights-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.insights-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.insight-item {
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.current-path {
+    color: #ff6b6b;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+}
+
+.improved-path {
+    color: #51cf66;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+}
+
+.insight-item strong {
+    color: #ffd93d;
+    font-weight: 700;
+}
+
+.innovation-text {
+    font-weight: 600;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Features Grid */
+.twin-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.feature-card h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .twin-page {
+        padding: 1rem 0.5rem;
+    }
+
+    .twin-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .twin-title {
+        font-size: 2.2rem;
+    }
+
+    .twin-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .simulation-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .scenario-selector {
+        min-width: auto;
+    }
+
+    .simulation-btn {
+        width: 100%;
+        padding: 1.25rem;
+    }
+
+    .visualization-section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .chart-placeholder {
+        height: 300px;
+    }
+
+    .chart-placeholder p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .insights-panel {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .insights-title {
+        font-size: 1.4rem;
+    }
+
+    .insight-item {
+        font-size: 1rem;
+    }
+
+    .twin-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .twin-title {
+        font-size: 1.8rem;
+    }
+
+    .twin-subtitle {
+        font-size: 1rem;
+    }
+
+    .simulation-controls {
+        padding: 1rem;
+    }
+
+    .scenario-select,
+    .simulation-btn {
+        font-size: 0.95rem;
+    }
+
+    .chart-placeholder {
+        height: 250px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .insights-panel {
+        padding: 1.25rem;
+    }
+
+    .insights-title {
+        font-size: 1.2rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+
+    .feature-card h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .twin-page {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+
+    .twin-header,
+    .simulation-controls,
+    .visualization-section,
+    .feature-card {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+
+    .twin-subtitle,
+    .selector-label,
+    .section-title,
+    .feature-card p {
+        color: #a0aec0;
+    }
+
+    .feature-card h4 {
+        color: #e2e8f0;
+    }
+
+    .scenario-select {
+        background: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+
+    .chart-placeholder {
+        background: linear-gradient(135deg, #4a5568, #718096);
+        border-color: #a0aec0;
+        color: #cbd5e0;
+    }
+
+    .insight-item strong {
+        color: #f6e05e;
+    }
+}
+
+/* Animation for interactive elements */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.simulation-btn:focus {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Loading state for future enhancements */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

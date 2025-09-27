@@ -1,7 +1,7 @@
 
 // src/app/layout.tsx
 
-import "./globals.css";
+import "./globals.css"
 // 1. IMPORT
 import { Inter } from "next/font/google"; 
 import Link from "next/link";

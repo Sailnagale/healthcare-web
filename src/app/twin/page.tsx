@@ -2,9 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-
-// NOTE: In a real application, you would import a charting library here.
-// e.g., import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import "./Twin.css";
 
 // Mock data representing the projected risk over 10 years for two scenarios
 const mockTwinData = [
@@ -18,19 +16,7 @@ const mockTwinData = [
 
 // Placeholder component for the chart
 const RiskChartPlaceholder = () => (
-  <div
-    style={{
-      height: "350px",
-      background: "#e9ecef",
-      borderRadius: "8px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#666",
-      border: "1px dashed #ccc",
-      margin: "20px 0",
-    }}
-  >
+  <div className="chart-placeholder">
     <p>📈 Data Visualization Placeholder (Integrate Recharts/Victory here)</p>
   </div>
 );
@@ -43,99 +29,81 @@ export default function DigitalTwinPage() {
     alert(
       `Running simulation for: ${lifestyleChange}. Data would be fetched from backend.`
     );
-    // In a real application, this would trigger a React Query mutation
-    // to fetch the mockTwinData (or real projected data) from your server.
   };
 
   return (
-    <div className="page-container">
-      <h1>🧬 Your Health Digital Twin</h1>
-      <p>
-        See the long-term impact of your current and improved lifestyle choices.
-      </p>
+    <div className="twin-page">
+      <div className="twin-header">
+        <h1 className="twin-title">🧬 Your Health Digital Twin</h1>
+        <p className="twin-subtitle">
+          See the long-term impact of your current and improved lifestyle choices.
+        </p>
+      </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          alignItems: "flex-end",
-          margin: "20px 0",
-          borderBottom: "1px solid #eee",
-          paddingBottom: "20px",
-        }}
-      >
-        {/* Scenario Selector */}
-        <div style={{ flex: 1 }}>
-          <label
-            htmlFor="scenario-select"
-            style={{
-              fontWeight: "bold",
-              display: "block",
-              marginBottom: "5px",
-            }}
-          >
+      <div className="simulation-controls">
+        <div className="scenario-selector">
+          <label htmlFor="scenario-select" className="selector-label">
             Simulate Lifestyle Change:
           </label>
           <select
             id="scenario-select"
             value={lifestyleChange}
             onChange={(e) => setLifestyleChange(e.target.value)}
-            style={{
-              padding: "10px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              width: "100%",
-            }}
+            className="scenario-select"
           >
             <option value="quit_smoking">Quit Smoking</option>
             <option value="lose_10kg">Lose 10kg</option>
             <option value="exercise_weekly">Start Exercising 3x/Week</option>
+            <option value="reduce_alcohol">Reduce Alcohol Intake</option>
+            <option value="improve_diet">Improve Diet Quality</option>
           </select>
         </div>
 
-        {/* Simulation Button */}
-        <button
-          onClick={runSimulation}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
+        <button onClick={runSimulation} className="simulation-btn">
           Run 10-Year Prediction
         </button>
       </div>
 
-      {/* Visualization Area */}
-      <h2>10-Year Projected Lung Disease Risk (%)</h2>
+      <div className="visualization-section">
+        <h2 className="section-title">10-Year Projected Lung Disease Risk (%)</h2>
+        <RiskChartPlaceholder />
+      </div>
 
-      <RiskChartPlaceholder />
+      <div className="insights-panel">
+        <h3 className="insights-title">Simulation Insights</h3>
+        <div className="insights-content">
+          <p className="insight-item">
+            <span className="current-path">Current Path (Red Line):</span> Your risk increases to{" "}
+            <strong>{mockTwinData[5].current_risk}%</strong> in 10 years.
+          </p>
+          <p className="insight-item">
+            <span className="improved-path">Improved Path (Green Line):</span> By choosing to{" "}
+            <strong>{lifestyleChange.replace(/_/g, " ")}</strong>, your risk is reduced to{" "}
+            <strong>{mockTwinData[5].improved_risk}%</strong> in 10 years.
+          </p>
+          <p className="innovation-text">
+            Innovation: Predictive, preventive medicine in a gamified way.
+          </p>
+        </div>
+      </div>
 
-      {/* Simulation Results Explanation */}
-      <div
-        style={{
-          marginTop: "30px",
-          padding: "15px",
-          borderLeft: "5px solid #007bff",
-          backgroundColor: "#e6f3ff",
-        }}
-      >
-        <h3>Simulation Insights</h3>
-        <p style={{ margin: "5px 0" }}>
-          **Current Path (Red Line):** Your risk increases to **
-          {mockTwinData[5].current_risk}%** in 10 years.
-        </p>
-        <p style={{ margin: "5px 0" }}>
-          **Improved Path (Green Line):** By choosing to **
-          {lifestyleChange.replace("_", " ")}**, your risk is reduced to **
-          {mockTwinData[5].improved_risk}%** in 10 years.
-        </p>
-        <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-          Innovation: Predictive, preventive medicine in a gamified way.
-        </p>
+      {/* Additional Features */}
+      <div className="twin-features">
+        <div className="feature-card">
+          <div className="feature-icon">📊</div>
+          <h4>Real-time Analytics</h4>
+          <p>Monitor your health metrics with live data tracking</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">🔮</div>
+          <h4>Predictive Modeling</h4>
+          <p>AI-powered predictions based on your unique profile</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">💡</div>
+          <h4>Personalized Insights</h4>
+          <p>Actionable recommendations tailored to your goals</p>
+        </div>
       </div>
     </div>
   );
