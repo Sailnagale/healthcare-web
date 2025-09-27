@@ -1,14 +1,17 @@
+
 // src/app/layout.tsx
+
 import "./globals.css";
-import { Inter } from "next/font/google"; // Make sure this import is present
+// 1. IMPORT
+import { Inter } from "next/font/google"; 
 import Link from "next/link";
 
-// Define the font variable 'inter' here (outside the component function)
-const inter = Inter({ subsets: ["latin"] });
+// 2. DEFINE THE FONT VARIABLE
+// This must be a constant defined at the module level (outside the function)
+const inter = Inter({ subsets: ["latin"] }); 
 
 export const metadata = {
-  title: "AI Health Companion",
-  description: "AI-powered healthcare application with Digital Twin simulation",
+  // ...
 };
 
 export default function RootLayout({
@@ -18,8 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* 'inter' is now correctly defined and accessible */}
       <body className={inter.className}>
+        {/* ... rest of your layout */}
         <header className="site-header">
           <nav className="navbar">
             <div className="logo">
@@ -33,6 +36,8 @@ export default function RootLayout({
               <Link href="/chatbot">Chatbot</Link>
               <Link href="/appointment">Book Appointment</Link>
               <Link href="/twin">Digital Twin</Link>
+              {/* ⭐⭐⭐ ADDED PNEUMONIA DIAGNOSIS LINK ⭐⭐⭐ */}
+              <Link href="/diagnosis">Pneumonia AI</Link>
             </div>
           </nav>
         </header>
