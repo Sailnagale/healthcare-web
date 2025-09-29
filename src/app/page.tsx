@@ -1,37 +1,93 @@
 // src/app/page.tsx
+import React from "react";
+import Link from "next/link";
+import "./home.css"; // Import the new CSS file
 
-export default function HomePage() {
+// Type for the card data
+interface ServiceCardProps {
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+}
+
+const services: ServiceCardProps[] = [
+  {
+    title: "Talk to Our Chatbot",
+    description:
+      "Get instant answers to your health questions from our dual-engine AI assistant (Gemini/OpenAI).",
+    icon: "💬",
+    href: "/chatbot",
+  },
+  {
+    title: "Book an Appointment",
+    description:
+      "Schedule your next consultation with our specialists quickly and easily.",
+    icon: "📅",
+    href: "/appointment",
+  },
+  {
+    title: "Check Your X-Ray",
+    description:
+      "Upload your diagnostic images for quick AI-powered initial review and insights.",
+    icon: "レントゲン", // X-ray/Radiography symbol
+    href: "/diagnosis",
+  },
+  {
+    title: "My Digital Twin",
+    description:
+      "Visualize and monitor your personalized health model to predict potential risks and outcomes.",
+    icon: "🧬", // DNA/Genetics symbol
+    href: "/twin", // Links to your existing 'twin' folder
+  },
+  {
+    title: "Medicine Checker",
+    description:
+      "Verify drug information, check dosages, and look up potential interactions.",
+    icon: "💊", // Pill/Medicine symbol
+    href: "/medicine-checker", // Links to a new medicine checker folder
+  },
+];
+
+// Reusable Card Component
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  description,
+  icon,
+  href,
+}) => (
+  <Link href={href} className="service-card-link">
+    <div className="service-card">
+      <div className="service-icon">{icon}</div>
+      <h2 className="service-title">{title}</h2>
+      <p className="service-description">{description}</p>
+      <div className="service-cta">Go &rarr;</div>
+    </div>
+  </Link>
+);
+
+const HomePage: React.FC = () => {
   return (
-    <div className="page-container">
-      <h1>Welcome to Your AI Health Companion</h1>
-      <p className="description">
-        Leverage AI for better health management, from real-time stress
-        detection to predictive Digital Twin simulations.
-      </p>
+    <div className="home-page-container">
+      <header className="home-header">
+        <h1>Your Health Portal</h1>
+        <p>A seamless, AI-powered healthcare experience.</p>
+      </header>
 
-      <h2>Key Features Overview</h2>
-      <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
-        <li>
-          **AI Symptom Checker (Chatbot):** Get pre-diagnosis insights based on
-          your symptoms.
-        </li>
-        <li>
-          **AI Stress & Mental Health Detector:** Real-time feedback on your
-          emotional well-being.
-        </li>
-        <li>
-          **AI for Radiology:** Upload scans for preliminary anomaly detection
-          (Hackathon Lite).
-        </li>
-        <li>
-          **Digital Twin for Health:** Visualize the long-term impact of your
-          lifestyle choices on your future health.
-        </li>
-      </ul>
+      <main className="services-grid">
+        {services.map((service, index) => (
+          <ServiceCard key={index} {...service} />
+        ))}
+      </main>
 
-      <p style={{ marginTop: "20px", fontWeight: "bold" }}>
-        Use the navigation bar above to explore the different tools.
-      </p>
+      <footer className="home-footer">
+        <p>
+          &copy; {new Date().getFullYear()} AI Health Solutions. All rights
+          reserved.
+        </p>
+      </footer>
     </div>
   );
-}
+};
+
+export default HomePage;
