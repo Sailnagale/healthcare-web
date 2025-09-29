@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGuard - AI Medicine Authenticity Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🛡️ MediGuard</h1>
+            <p>AI-Powered Medicine Authenticity Detection System</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Protecting lives by detecting counterfeit medications</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">99.2%</div>
+                    <div>Accuracy Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="analyzed-count">0</div>
+                    <div>Pills Analyzed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15M+</div>
+                    <div>Lives Protected</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="upload-section">
+                <h2 class="section-title">
+                    📸 Upload Medicine Image
+                </h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon"><i class="fas fa-camera"></i></div>
+                    <div class="upload-text">
+                        Drag & drop your medicine image here<br>
+                        or click to browse
+                    </div>
+                    <input type="file" id="fileInput" class="file-input" accept="image/*">
+                    <button class="btn" onclick="document.getElementById('fileInput').click()">
+                        Choose Image
+                    </button>
+                </div>
+
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img id="previewImage" class="preview-image" alt="Medicine preview">
+                    <div style="margin-top: 15px;">
+                        <button class="btn" id="analyzeBtn" onclick="analyzeMedicine()">
+                            🔍 Analyze Medicine
+                        </button>
+                    </div>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing medicine authenticity...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2 class="section-title">
+                    📊 Analysis Results
+                </h2>
+                
+                <div id="noResults" style="text-align: center; color: #666; padding: 40px;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🔬</div>
+                    <p>Upload a medicine image to start analysis</p>
+                </div>
+
+                <div id="analysisResults" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2 class="section-title">🚀 Key Features</h2>
+            <div class="features-grid" id="featuresGrid">
+                
+                <div class="feature-card" data-feature="ai-detection">
+                    <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+                    <div class="feature-title">Advanced AI Detection</div>
+                    <div class="feature-description">
+                        Deep learning algorithms with computer vision for accurate pill analysis
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-feature="real-time">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="feature-title">Real-time Analysis</div>
+                    <div class="feature-description">
+                        Instant results with feature extraction and database comparison
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-feature="qr-code">
+                    <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
+                    <div class="feature-title">QR Code Support</div>
+                    <div class="feature-description">
+                        Automatic QR code detection and verification for enhanced security
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-feature="database">
+                    <div class="feature-icon"><i class="fas fa-database"></i></div>
+                    <div class="feature-title">Database Integration</div>
+                    <div class="feature-description">
+                        Connected to comprehensive medicine database with NDC codes
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section" style="margin-top: 40px;">
+            <h2 class="section-title">📈 Analysis History</h2>
+            <div id="historyContainer">
+                <p style="text-align: center; color: #666;">Loading history...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="featureModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalBody"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

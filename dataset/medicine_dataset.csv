@@ -1,0 +1,9 @@
+name,shape,color,imprint,size_mm,thickness_mm,manufacturer,ndc_code,area,perimeter,circularity,aspect_ratio,authentic
+Paracetamol 500mg,round,white,P500,8.0,3.2,Generic Pharma,12345-678-90,50.24,25.13,0.89,1.0,1
+Aspirin 100mg,round,white,ASP100,7.0,2.8,Bayer,23456-789-01,38.48,21.99,0.92,1.0,1
+Ibuprofen 200mg,oval,brown,IBU200,12.0,4.5,Advil,34567-890-12,113.1,37.7,0.75,1.8,1
+Amoxicillin 500mg,capsule,pink-white,AMOX500,15.0,6.0,Amoxil,45678-901-23,176.7,47.1,0.65,2.5,1
+Paracetamol 500mg,round,off-white,FAKEP500,8.0,3.2,Generic Pharma,12345-678-90,57.65832867322553,25.13,0.6508038628993933,1.146422325929629,0
+Aspirin 100mg,round,off-white,FAKEASP100,7.0,2.8,Bayer,23456-789-01,40.196849483934066,21.99,0.7138140349754085,1.2273278856574905,0
+Ibuprofen 200mg,oval,off-brown,FAKEIBU200,12.0,4.5,Advil,34567-890-12,118.11923638876544,37.7,0.5693987529606809,1.5685920939305427,0
+Amoxicillin 500mg,capsule,off-pink-white,FAKEAMOX500,15.0,6.0,Amoxil,45678-901-23,214.55413028219766,47.1,0.4826800235125293,2.5643115755645436,0
