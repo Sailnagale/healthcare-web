@@ -1,0 +1,349 @@
+/* src/app/chatbot/page.css */
+
+/* === Base Styles (From original appointment template) === */
+
+.appointment-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.appointment-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    max-width: 700px; /* Increased width for better chat view */
+    width: 100%;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.appointment-card h1 {
+    color: #2d3748;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.appointment-card > p {
+    color: #718096;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* This block is slightly modified for better integration with chat inputs */
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: #2d3748;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3), 0 5px 15px rgba(102, 126, 234, 0.1); /* Enhanced shadow */
+    transform: translateY(-2px);
+}
+
+.appointment-form input:hover,
+.appointment-form select:hover,
+.appointment-form textarea:hover {
+    border-color: #cbd5e0;
+}
+
+
+.appointment-form button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1.25rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.appointment-form button:hover {
+    transform: translateY(-3px); /* Slightly more lift */
+    box-shadow: 0 12px 28px rgba(102, 126, 234, 0.4); /* Enhanced shadow */
+}
+
+.appointment-form button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.appointment-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.appointment-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.appointment-form button:hover::before {
+    left: 100%;
+}
+
+
+/* === Chatbot Specific Styles === */
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 450px; /* Fixed height for chat window */
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    background: #f7fafc;
+}
+
+.messages-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.message-item {
+    display: flex;
+}
+
+/* User Message - WIDER and better contrast */
+.message.user {
+    margin-left: auto;
+    background: #667eea; 
+    color: white;
+    border-radius: 15px 15px 0 15px;
+    max-width: 95%; /* WIDER MESSAGE BOX */
+    padding: 0.75rem 1rem;
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Bot Message - WIDER and better contrast */
+.message.bot {
+    margin-right: auto;
+    background: #f1f5f9; 
+    color: #2d3748;
+    border-radius: 15px 15px 15px 0;
+    max-width: 95%; /* WIDER MESSAGE BOX */
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+    gap: 0.75rem;
+    background: white;
+}
+
+/* Engine Selector - Animated/Cool Dropdown */
+.chat-input-area select {
+    flex-shrink: 0;
+    width: 110px; /* Slightly wider to fit icons/labels */
+    padding: 0.75rem 0.5rem; 
+    /* Inherits base styles from .appointment-form select */
+    appearance: none; /* Hide default arrow */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='m2 0 2 2-2 2L0 2z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.65rem;
+    padding-right: 2rem;
+    
+    /* Animation Enhancement */
+    transition: all 0.3s ease;
+}
+
+.chat-input-area select:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+}
+
+
+/* Input Field - inherits cool animated focus state */
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    /* Inherits focus/hover from .appointment-form input:focus */
+}
+
+/* Send Button - Animated/Cool Button */
+.chat-input-area button {
+    flex-shrink: 0;
+    padding: 0.75rem 1.25rem;
+    margin-top: 0; 
+    font-size: 0.95rem;
+    /* Inherits hover/active from .appointment-form button */
+}
+
+/* Bot Typing Loader */
+.message-loader {
+    margin-right: auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #718096;
+}
+
+/* Typing animation */
+.dot-typing {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #718096;
+    color: #718096;
+    animation: dot-typing 1.5s infinite linear;
+}
+
+.dot-typing::before, .dot-typing::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+.dot-typing::before {
+    left: -12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #718096;
+    animation: dot-typing 1.5s infinite linear;
+}
+
+.dot-typing::after {
+    left: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #718096;
+    animation: dot-typing 1.5s infinite linear;
+    animation-delay: 0.5s;
+}
+
+@keyframes dot-typing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.9);
+        opacity: 0.6;
+    }
+    75% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    
+    .chat-container {
+        border-color: #718096 !important;
+        background: #2d3748; 
+    }
+    
+    .message.user {
+        background: #667eea !important;
+        max-width: 95% !important; 
+    }
+    
+    .message.bot {
+        background: #4a5568 !important; 
+        color: #e2e8f0;
+        max-width: 95% !important; 
+    }
+    
+    .chat-input-area {
+        background: #2d3748; 
+        border-top-color: #4a5568;
+    }
+    
+    .chat-input-area select {
+        background: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+    
+    .chat-input-area select:hover {
+        border-color: #667eea;
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    }
+}
